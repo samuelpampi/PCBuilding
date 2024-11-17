@@ -1,0 +1,1 @@
+Este es un miniproyecto para el curso de HTML, CSS y JS en el que simula una especie de lista de la compra con componentes de un PC, pudiendo arrastrar los diferentes elementos a una cesta.
