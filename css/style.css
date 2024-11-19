@@ -43,6 +43,7 @@ header img{
 
 h2{
     color: #f05742;
+    margin-bottom: 10px;
 }
 
 footer{
@@ -54,7 +55,7 @@ footer{
 
 /*Seccion de componentes*/
 .grid-componentes{
-    font-size: 10px;
+    font-size: 8px;
     display: grid;
     grid-template-columns: repeat(3, 95px);
     gap: 5px;
