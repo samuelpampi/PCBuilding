@@ -72,68 +72,22 @@
 
         <!--Seccion donde estará la cesta donde colocar los componentes-->
         <section id="section-cesta">
-            <h2 id="cesta-title">Componentes seleccionados</h2>
-            <!--Cesta donde estarán los componentes seleccionados-->
-            <div id="cesta">
-                <div class="cesta-componente">
-                    <img src="./img/rtx4090.jpg" alt="RTX 6650 XT">
-                    <div class="nombre">
-                        <div class="grid-model"><p>RTX 6650 XT</p></div>
-                        <div class="grid-price"><p>1300€</p></div>
-                        <div class="grid-trash"><i class="fa-solid fa-trash"></i></div>
-                    </div>
+            <div id="cesta-container">
+                <h2 id="cesta-title">Componentes seleccionados</h2>
+                <!--Cesta donde estarán los componentes seleccionados-->
+                <div id="cesta">
+                    <!--Aqui se colocarán cada elemento que haga drop el usuario-->
                 </div>
-                <div class="cesta-componente">
-                    <img src="./img/i9.jpg" alt="RTX 6650 XT">
-                    <div class="nombre">
-                        <div class="grid-model"><p>RTX 6650 XT</p></div>
-                        <div class="grid-price"><p>1300€</p></div>
-                        <div class="grid-trash"><i class="fa-solid fa-trash"></i></div>
-                    </div>
-                </div>
-                <div class="cesta-componente">
-                    <img src="./img/vengeanceddr4.jpg" alt="RTX 6650 XT">
-                    <div class="nombre">
-                        <div class="grid-model"><p>RTX 6650 XT</p></div>
-                        <div class="grid-price"><p>1300€</p></div>
-                        <div class="grid-trash"><i class="fa-solid fa-trash"></i></div>
-                    </div>
-                </div>
-                <div class="cesta-componente">
-                    <img src="./img/m2samsung2tb.jpg" alt="RTX 6650 XT">
-                    <div class="nombre">
-                        <div class="grid-model"><p>RTX 6650 XT</p></div>
-                        <div class="grid-price"><p>1300€</p></div>
-                        <div class="grid-trash"><i class="fa-solid fa-trash"></i></div>
-                    </div>
-                </div>
-                <div class="cesta-componente">
-                    <img src="./img/corsair1000.jpg" alt="RTX 6650 XT">
-                    <div class="nombre">
-                        <div class="grid-model"><p>RTX 6650 XT</p></div>
-                        <div class="grid-price"><p>1300€</p></div>
-                        <div class="grid-trash"><i class="fa-solid fa-trash"></i></div>
-                    </div>
-                </div>
-                <div class="cesta-componente">
-                    <img src="./img/asusprime.jpg" alt="RTX 6650 XT">
-                    <div class="nombre">
-                        <div class="grid-model"><p>RTX 6650 XT</p></div>
-                        <div class="grid-price"><p>1300€</p></div>
-                        <div class="grid-trash"><i class="fa-solid fa-trash"></i></div>
-                    </div>
+
+                <!--Boton para vaciar toda la cesta-->
+                <button id="vaciar-cesta">Vaciar Cesta</button>
+
+                <!--Cantidad total a pagar-->
+                <div id="precio-total">
+                    <p id="total">TOTAL:</p>
+                    <p id="precio"></p>
                 </div>
             </div>
-
-            <!--Boton para vaciar toda la cesta-->
-            <button id="vaciar-cesta">Vaciar Cesta</button>
-
-            <!--Cantidad total a pagar-->
-            <div id="precio-total">
-                <p id="total">TOTAL:</p>
-                <p id="precio">23€</p>
-            </div>
-
         </section>
     </main>
 
@@ -144,5 +98,6 @@
 
     <script src="./js/inventario.js"></script>
     <script src="./js/loadShop.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>

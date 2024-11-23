@@ -14,12 +14,13 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #f7f7f7;
+    flex: 1;
 }
 
 main{
-    margin-top: 50px;
     display: flex;
-    flex-direction: row;
+    margin-top: 50px;
+    min-height: calc(100vh - 87px);
     background-color: #f7f7f7;
 }
 
@@ -29,12 +30,16 @@ section{
 
 header{
     text-align: center;
-    width: 1056px;
+    width: 100%;
     height: 50px;
     background-color: #f7f7f7;
     padding: 10px;
     position: fixed;
     top: 0;
+    z-index: 10;
+    -webkit-box-shadow: 0px 1px 15px -1px rgba(0,0,0,0.24);
+    -moz-box-shadow: 0px 1px 15px -1px rgba(0,0,0,0.24);
+    box-shadow: 0px 1px 15px -1px rgba(0,0,0,0.24);
 }
 
 header img{
@@ -51,20 +56,21 @@ footer{
     padding: 10px;
     background-color: #f05742;
     width: 100%;
+    bottom: 0;
 }
 
 /*Seccion de componentes*/
 .grid-componentes{
-    font-size: 8px;
+    font-size: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 95px);
+    grid-template-columns: repeat(3, 132px);
     gap: 5px;
 }
 
 .componente{
     border: 1px solid #c0c0c0;
     border-radius: 6px;
-    width: 93px;
+    width: 130px;
     background-color: #eb7768;
 }
 
@@ -76,8 +82,9 @@ footer{
 
 #section-componentes{
     display: grid;
-    grid-template-columns: repeat(2, 295px);
+    grid-template-columns: repeat(2, 406px);
     gap: 40px;
+    overflow-y: auto;
 }
 
 .components-data{
@@ -85,6 +92,11 @@ footer{
 }
 
 /*Seccion de la cesta*/
+#cesta-container{
+    position: sticky;
+    top: 85px;
+}
+
 #cesta{
     background-color: white;
     border: 1px solid #c0c0c0;
