@@ -72,6 +72,11 @@ footer{
     border-radius: 6px;
     width: 130px;
     background-color: #eb7768;
+    cursor: pointer;
+}
+
+.componente:hover{
+    border: 1px solid #eb7768;
 }
 
 .componente img{
@@ -162,6 +167,12 @@ footer{
     border-radius: 6px;
     margin-top: 20px;
     width: 100%;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+#vaciar-cesta:hover{
+    background-color: #969696;
 }
 
 #precio-total{

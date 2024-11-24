@@ -1,12 +1,15 @@
 var cesta;
 var btn_vaciar;
 var selectedComponent = {};
+var deletedComponent =  {};
+var componentesSection;
 var precio = 0;
 var precioItem;
 
 function cargarEventos(){
     btn_vaciar = document.getElementById("vaciar-cesta");
     cesta = document.getElementById("cesta");
+    componentesSection = document.getElementById("section-componentes");
 
     btn_vaciar.addEventListener("click", vaciarCesta);
     actualizarPrecio();
@@ -38,9 +41,25 @@ function cargarEventos(){
 
         //Actualizar precio
         actualizarPrecio();
+    });
 
-        //Crear eventos para boton de eliminar
-        agregarEventosEliminar();
+    componentesSection.addEventListener("dragover", event =>{
+        event.preventDefault();
+    });
+
+    componentesSection.addEventListener("drop", event => {
+        if(deletedComponent){
+            let componente = deletedComponent;
+            if (componente){
+                //Actualizar el precio
+                let precioComponente = parseFloat(componente.querySelector(".grid-price p").innerText.replace("€", "")); //Recuperamos el precio, eliminando el simbolo €
+                console.log("Precio: " + precioComponente);
+                precio -= precioComponente;
+
+                componente.remove();
+                actualizarPrecio();
+            }
+        }
 
     });
 }
@@ -60,12 +79,13 @@ function insertarCesta(event){
     //Desestructuramos el selectedComponent
     let {type, id} = selectedComponent;
     let component = inventario[type].find(componente => componente.id == id); //Extraemos el componente del inventario con toda su info
-    let cestaElement = `<div class="cesta-componente ${type}" id="cesta-${component.id}">
-                            <img src="${component.imagen}" alt="${component.id}">
+    let componentId = `cesta-${component.id}-${Date.now()}`; //Creamos un id que sea unico
+    let cestaElement = `<div class="cesta-componente ${type}" id="${componentId}" draggable="true">
+                            <img src="${component.imagen}" alt="${component.id}" draggable="false">
                             <div class="nombre">
                                 <div class="grid-model"><p>${component.nombre}</p></div>
                                 <div class="grid-price"><p>${component.precio}€</p></div>
-                                <div id="delete-${component.id}" class="grid-trash"><i class="fa-solid fa-trash"></i></div>
+                                <div id="delete-${componentId}" class="grid-trash"><i class="fa-solid fa-trash"></i></div>
                             </div>
                         </div>`;
 
@@ -73,26 +93,31 @@ function insertarCesta(event){
 
     //Actualizar precio
     precio += parseFloat(component.precio);
-}
 
-function agregarEventosEliminar(){
-    //Crear eventos para boton de eliminar
-    document.querySelectorAll(".grid-trash").forEach((componenteCesta) => {
-        componenteCesta.addEventListener("click", e => {
-            let componenteId = e.target.closest(".cesta-componente").id; //Cogemos el primer ancestro de la papelera que coincida con la clase especifica, es decir el objeto completo, y sacamos su id para poder eliminarlo
+    //Agregamos eventos para eliminar el elemento de la cesta
 
-            //Eliminamos el componente de la cesta
-            let componente = document.getElementById(componenteId);
-            if (componente){
-                //Actualizar el precio
-                let precioComponente = parseFloat(componente.querySelector(".grid-price p").innerText.replace("€", "")); //Recuperamos el precio, eliminando el simbolo €
-                precio -= precioComponente;
-
-                componente.remove();
-                actualizarPrecio();
-            }
-        });
+    //Evento Drag & Drop
+    let newComponent = document.getElementById(componentId);
+    newComponent.addEventListener("dragstart", event => {
+        deletedComponent = event.target
+        console.log("Borrando: ", {deletedComponent});
     });
+
+    //Eventos boton eliminar
+    let deleteButton = newComponent.querySelector(`#delete-${componentId}`);
+    deleteButton.addEventListener("click", event => {
+        let componente = document.getElementById(componentId);
+        if (componente) {
+            // Actualizar el precio total
+            let precioComponente = parseFloat(componente.querySelector(".grid-price p").innerText.replace("€", ""));
+            precio -= precioComponente;
+
+            // Eliminar el componente de la cesta
+            componente.remove();
+            actualizarPrecio();
+        }
+    });
+
 }
 
 //Eventos de inicio
