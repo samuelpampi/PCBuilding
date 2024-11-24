@@ -1,1 +1,3 @@
 Este es un miniproyecto para el curso de HTML, CSS y JS en el que simula una especie de lista de la compra con componentes de un PC, pudiendo arrastrar los diferentes elementos a una cesta.
+
+Para usarlo solo debe abrirse el archivo index.html, La funcionalidad se basa en una seccion de un inventario de componentes que se van arrastrando a la cesta de la compra. Se pueden borrar de la cesta de tras formas, arrastrando, con el botón o vaciando la cesta por completo. La funcionalidad basica del ejercicio es el Drag and Drop.
